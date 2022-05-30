@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="randomnumber">
+        <input type="text" id="tb" name="tb" />
+        </br>
+      
+        <input type="button" value="Random Number!" onclick="randomValue();" />
+      </form>
+
+        <p id = "Random_Sample"></p>
+        <p id = "min"></p>
+        <p id = "max"></p>
+        <p id= "average"></p>
+        <p id= "sum"></p>
+        <p id = "product"></p>
+
+      <script>
+
+function Random() {
+  return Math.floor(Math.random() * 20)-10;
+}
+
+function randomValue() {
+  document.getElementById('tb').value = Random();
+}
+//Random Sample//
+var randomarr=Array.from({length:10},() => Math.floor(Math.random() * 20)-10);
+document.getElementById('Random_Sample').innerHTML = "Random Sample: " + randomarr;
+
+//Min Value//
+var min =Math.min.apply(null, randomarr);
+document.getElementById('min').innerHTML = "Minimum value: " + min;
+
+//Max Value//
+var max =Math.max.apply(null, randomarr);
+document.getElementById('max').innerHTML = "Maximum value: " + max;
+
+//Average//
+var average = (randomarr.reduce ((a,b) => a+b,0)/randomarr.length);
+document.getElementById('average').innerHTML = "Average: " + average;
+
+//Sum//
+var sum = randomarr.reduce ((a,b) => a+b,0);
+document.getElementById('sum').innerHTML = "Sum: " + sum;
+
+//Product//
+var product = 1;
+    for (var i=0; i<randomarr.length; i++) { 
+        product *=randomarr[i];
+    }
+   document.getElementById('product').innerHTML = "Product: " + product;
+
+      </script>
+</body>
+</html>
